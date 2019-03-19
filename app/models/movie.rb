@@ -13,5 +13,16 @@
 #
 
 class Movie < ApplicationRecord
+
+  validates_with TitleBracketsValidator
+
+
+  # def are_brackets_closed(title)
+  #   title.gsub(/\([^\)]*\)|\[[^\]]*\]|\{[^\}]*\}/mi) do |found_brackets|
+      
+  #   end
+  # end
+
   belongs_to :genre
+  has_many :comments
 end

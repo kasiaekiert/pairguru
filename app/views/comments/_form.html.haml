@@ -1,0 +1,19 @@
+= form_for @comment do |f|
+  = f.hidden_field :movie_id, :value => @movie.id 
+  - if @comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |message|
+          %li= message
+  
+  .container
+    .row
+      .col-xs-5
+        .field
+          = f.label :"Place For Your Comment:"
+          %br/
+          = f.text_area :body, :class => "comment-text"
+      .col-xs-7
+        .actions
+          = f.submit 'Save', :class => "btn btn-secondary comment-submit"
